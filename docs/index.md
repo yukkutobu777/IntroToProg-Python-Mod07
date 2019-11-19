@@ -1,6 +1,6 @@
-** Name: ** *Kerry Bosworth*  
-** Date: ** *Nov 18, 2019*  
-** Assignment: ** *07*
+**Name:** *Kerry Bosworth*  
+**Date:** *Nov 18, 2019*  
+**Assignment:** *07*
 
 # Don’t get into a pickle with your exceptions
 
