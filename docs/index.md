@@ -145,13 +145,13 @@ None
 
 These are examples of the program running successfully. It creates a file if none exists (see Figure 5) and if one does (see Figure 6), it displays the list and prompts the user to add another.
 
-[Figure1](docs/Figure1.png)
+![Figure 1](https://yukkutobu777.github.io/IntroToProg-Python-Mod07/Figure1.png "Figure 1")
 
-Figure 1: Run of program in PyCharm
+### Figure 1: Run of program in PyCharm
 
-[Figure2](docs/Figure2.png)
+![Figure 2](https://yukkutobu777.github.io/IntroToProg-Python-Mod07/Figure2.png "Figure 2")
 
-Figure 2: Run of program in command line
+### Figure 2: Run of program in command line
 
 ## Summary
 
