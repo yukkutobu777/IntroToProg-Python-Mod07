@@ -143,7 +143,7 @@ None
 <class '__main__.CustomError'>
 ```
 
-These are examples of the program running successfully. It creates a file if none exists (see Figure 5) and if one does (see Figure 6), it displays the list and prompts the user to add another.
+These are examples of the program running successfully. It creates a file if none exists (see Figure 1) and if one does (see Figure 2), it displays the list and prompts the user to add another.
 
 ![Figure 1](https://yukkutobu777.github.io/IntroToProg-Python-Mod07/Figure1.png "Figure 1")
 Figure 1: Run of program in PyCharm
