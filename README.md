@@ -1,8 +1,8 @@
-# Kerry Bosworth
-# Nov 18, 2019
-# Assignment07
+Kerry Bosworth
+Nov 18, 2019
+Assignment07
 
-## Don’t get into a pickle with your exceptions
+                                      	# Don’t get into a pickle with your exceptions
 
 ## Introduction
 
