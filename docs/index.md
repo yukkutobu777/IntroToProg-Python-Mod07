@@ -1,8 +1,8 @@
-Kerry Bosworth
-Nov 18, 2019
-Assignment07
+** Name: ** *Kerry Bosworth*  
+** Date: ** *Nov 18, 2019*  
+** Assignment: ** *07*
 
-                                      	# Don’t get into a pickle with your exceptions
+# Don’t get into a pickle with your exceptions
 
 ## Introduction
 
@@ -21,11 +21,12 @@ Build deck, build
 
 And I have this code:
 
+```
 list_of_data = pickle.load(objFile)
 print()
 list_of_data = pickle.load(objFile)
 print()
-
+```
 It will display the first two values only:
 Buy blueprint, plan
 Dig holes, prep
@@ -43,12 +44,48 @@ Finally, this page presented a viable solution. One of the answers used the appe
 https://stackoverflow.com/questions/35067957/how-to-read-pickle-file
 
 Here is that section of code in my program. Coincidentally, this also included a try and except block as well.
+```
+    def read_data_from_file(file_name):
+        """
+        Desc - Removes an item input by the user into the table
+        :param file_name: (file) file that will be read
+        :return: list
+        """
+        list_of_data = []
+        with (open(file_name, "rb")) as objFile:
+            while True:
+                try:
+                    list_of_data.append(pickle.load(objFile))
+                except EOFError:
+                    break
+        objFile.close()
+        for row in list_of_data:
+            print(row[0] + " (" + row[1] + ")")
+        print()
+```
+The main body of my program is fairly simple.
 
-Figure 1: Read function using pickle
+```
+# Presentation ------------------------------------ #
+# TODO: check to see if the file exists
+FileHandling.does_file_exist(strFileName)
 
-The main body of my program is fairly simple (see Figure 2).
+# TODO: read the contents of the binary file
+print("These are the steps documented to build the shed:")
+FileHandling.read_data_from_file(strFileName)
 
-Figure 2: Main body of program
+# TODO: ask for input
+step = input("Enter a step: ")
+phase = input("Enter a phase (plan, prep, build, finish: ")
+lstSteps=[step, phase]
+
+# TODO: store the list object into a binary file
+FileHandling.save_data_to_file(strFileName,lstSteps)
+
+# # TODO: read the data from the file after updates have been saved
+print("Here is the list after your additions:")
+FileHandling.read_data_from_file(strFileName)
+```
 
 The bulk of my exceptions were in the function called does_file_exist. Researching exceptions online was easy. These were good reference pages:
 
@@ -60,26 +97,57 @@ And there were good pages with some tutorials.
 https://pyblog.in/programming/python/python-exception-handling/
 https://www.edureka.co/blog/python-try-except/
 
-I called this function first thing when the program starts to see if there is a file. If there is no file present in the directory, it will ask the user if they want to create one (see Figure 3). If ‘y’, the file will be created, and it will continue to the next function in the main body of the program.
+I called this function first thing when the program starts to see if there is a file. If there is no file present in the directory, it will ask the user if they want to create one. If ‘y’, the file will be created, and it will continue to the next function in the main body of the program.
 
-Figure 3: does_file_exist function
+```
+class FileHandling:
+    def does_file_exist(file_name):
+        """
+        Desc - Checks to see if a file exists
+        :param file_name: (file) file to be checked:
+        :return: nothing
+        """
+        try:
+            objFile = open(file_name, "rb")
+            objFile.close()
+        except FileNotFoundError:
+            #print("File does not exist.")
+            choice = input("File does not exist. Create one? y/n \n")
+            try:
+                if choice.lower() == 'y':
+                    objFile = open(file_name, "wb+")
+                    objFile.close()
+                else:
+                    raise CustomError()
+            except Exception as e:
+                print(e, e.__doc__, type(e), sep='\n')
+                sys.exit(1)
+```
 
-If the user inputs any other key sequence it will raise a custom error stating that the program will now exit (See Figure 4).
+If the user inputs any other key sequence it will raise a custom error stating that the program will now exit.
 
-Figure 4: CustomError Exception
+```
+class CustomError(Exception):
+    def __str__(self):
+        """"This is a custom error when when the user does not want to proceed and exit the program"""
+        return "The program will exit now."
+```
 
 For example:
+
+```
 File does not exist. Create one? y/n
 n
 The program will exit now.
 None
 <class '__main__.CustomError'>
+```
 
 These are examples of the program running successfully. It creates a file if none exists (see Figure 5) and if one does (see Figure 6), it displays the list and prompts the user to add another.
 
-Figure 5: Run of program in PyCharm
+Figure 1: Run of program in PyCharm
 
-Figure 6: Run of program in command line
+Figure 2: Run of program in command line
 
 ## Summary
 
